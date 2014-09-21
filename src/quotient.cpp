@@ -153,54 +153,15 @@ Generator reference_generator(Product prod)
     return ref_generator;
 }
 
-bool product_contains(Product prod, Tuple tuple)
+bool product_contains(Product &prod, Tuple tuple)
 {
-    bool found = false;
-    for (Product::iterator it = prod.begin(); it != prod.end(); it++)
-        if ((*it) == tuple)
-            found = true;
-    return found;
-}
-
-Product difference(Product prod_1, Product prod_2)
-{
-    Product diff;
-
-    for (Product::iterator pi_1 = prod_1.begin(); pi_1 != prod_1.end(); pi_1++)
-        if (!product_contains(prod_2, (*pi_1)))
-            diff.insert(*pi_1);
-
-    return diff;
-}
-
-void print_product(Product prod)
-{
-    for (Product::iterator pi = prod.begin(); pi != prod.end(); pi++)
-    {
-        for (Tuple::const_iterator ti = (*pi).begin(); ti != (*pi).end(); ti++)
-        {
-            std::cout << *ti;
-
-            if (++ti != (*pi).end())
-                std::cout << ',';
-
-            ti--;
-        }
-
-        std::cout << std::endl;
-    }
+    return prod.find(tuple) != prod.end();
 }
 
 Quotient generating_sets(Product prod)
 {
     Quotient quot;
     Product ref_prod = prod;
-
-    /*
-    Generator ref_generator = reference_generator(prod);
-    Product ref_product = cartesian_product(ref_generator);
-    Product diff = difference(ref_product, prod);
-    */
 
     for (unsigned int num_generators = 1, inserted = 0; prod.size() > 0; num_generators++)
     {
@@ -231,7 +192,8 @@ Quotient generating_sets(Product prod)
 
             current_generator = tmp;
             prod.erase(pi++);
-                VPRINT(++inserted << " tuples inserted into " << num_generators << " generators ");
+            VPRINT(++inserted << " tuples inserted into " << num_generators << " generators ");
+        // FIXME: Ugly "expected primary-expression before '}' token" fix 
         foo:
             if (1 == 2) break;
         }
