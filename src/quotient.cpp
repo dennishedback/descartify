@@ -194,9 +194,13 @@ void print_product(Product prod)
 Quotient generating_sets(Product prod)
 {
     Quotient quot;
+    Product ref_prod = prod;
+
+    /*
     Generator ref_generator = reference_generator(prod);
     Product ref_product = cartesian_product(ref_generator);
     Product diff = difference(ref_product, prod);
+    */
 
     for (unsigned int num_generators = 1, inserted = 0; prod.size() > 0; num_generators++)
     {
@@ -215,15 +219,21 @@ Quotient generating_sets(Product prod)
    
             Product tmp_product = cartesian_product(tmp);
 
-            if (difference(tmp_product, diff).size() == product_cardinality(tmp)) {
-                current_generator = tmp;
-                prod.erase(pi++);
-                VPRINT(++inserted << " tuples inserted into " << num_generators << " generators ");
-            }
-            else
+            for (Product::iterator tmpi = tmp_product.begin(); tmpi != tmp_product.end(); tmpi++)
             {
-                ++pi;
+                if (!product_contains(ref_prod, *tmpi))
+                {
+                    ++pi;
+                    // FIXME: Go away ugly goto, go away!
+                    goto foo;
+                }
             }
+
+            current_generator = tmp;
+            prod.erase(pi++);
+                VPRINT(++inserted << " tuples inserted into " << num_generators << " generators ");
+        foo:
+            if (1 == 2) break;
         }
         quot.insert(current_generator);
     }
