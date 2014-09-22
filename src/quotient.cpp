@@ -45,9 +45,9 @@ static Options opts;
 
 #define VPRINT(x) if (opts.verbose) { std::cerr << x << std::endl; }
 
-Product read_tuples(void)
+void read_tuples(Product &prod)
 {
-    Product prod;
+    VPRINT("Reading input...");
     Tuple current_tuple;
     std::string current_elem;
 
@@ -71,27 +71,23 @@ Product read_tuples(void)
             current_elem += c;
         }
     }
-
-    return prod;
 }
 
-unsigned int product_cardinality(Generator gen)
+unsigned int product_cardinality(Generator &gen)
 {
     unsigned int cardinality = 1;
 
     for (Generator::iterator it = gen.begin(); it != gen.end(); it++)
-        cardinality *= (*it).size();
+        cardinality *= it->size();
 
     return cardinality;
 }
 
-Product cartesian_product(Generator gen)
+Product cartesian_product(Generator &gen)
 {
     Product prod;
-    unsigned int counters[gen.size()];
-    size_t gen_size;
-
-    gen_size = gen.size();
+    size_t gen_size = gen.size();
+    unsigned int counters[gen_size];
 
     for (unsigned int i = 0; i < gen_size; i++)
         counters[i] = 0;
@@ -125,32 +121,10 @@ Product cartesian_product(Generator gen)
     return prod;
 }
 
-Generator init_generator(size_t size)
+void init_generator(Generator &gen, size_t size)
 {
-    Generator gen;
     for (unsigned int i = 0; i < size; i++)
         gen.push_back(Set());   
-    return gen;
-}
-
-Generator reference_generator(Product prod)
-{
-    Generator ref_generator;
-    
-    if (prod.size() > 0)
-        ref_generator = init_generator((*prod.begin()).size());
-
-    for (Product::iterator pi = prod.begin(); pi != prod.end(); pi++)
-    {
-        unsigned int i = 0;
-        
-        for (Tuple::const_iterator ti = (*pi).begin(); ti != (*pi).end(); i++, ti++)
-        {
-            ref_generator[i].insert(*ti);
-        }
-    }
-
-    return ref_generator;
 }
 
 bool product_contains(Product &prod, Tuple tuple)
@@ -158,18 +132,38 @@ bool product_contains(Product &prod, Tuple tuple)
     return prod.find(tuple) != prod.end();
 }
 
-Quotient generating_sets(Product prod)
+void print_generator(Generator &gen)
 {
-    Quotient quot;
+        for (Generator::const_iterator gi = gen.begin(); gi != gen.end(); gi++)
+        {
+            for (Set::iterator si = gi->begin(); si != gi->end(); si++)
+            {
+                std::cout << *si;
+
+                if (++si != gi->end())
+                    std::cout << ',';
+
+                si--;
+            }
+
+            std::cout << '\n';
+        }
+
+        std::cout << "%%\n";
+}
+
+void generating_sets(Product &prod)
+{
     Product ref_prod = prod;
 
     for (unsigned int num_generators = 1, inserted = 0; prod.size() > 0; num_generators++)
     {
-        Generator current_generator = init_generator((*prod.begin()).size());
-        Product to_erase;
+        Generator current_generator;
+        init_generator(current_generator, prod.begin()->size());
+
         for (Product::iterator pi = prod.begin(); pi != prod.end();)
         {
-            Tuple current_tuple = (*pi);
+            Tuple current_tuple = *pi;
             Generator tmp = current_generator;
             size_t tup_size = current_tuple.size();
               
@@ -197,41 +191,16 @@ Quotient generating_sets(Product prod)
         foo:
             if (1 == 2) break;
         }
-        quot.insert(current_generator);
-    }
-
-    return quot;
-}
-
-void print_quotient(Quotient quot)
-{
-    for (Quotient::iterator qi = quot.begin(); qi != quot.end(); qi++)
-    {    
-        for (Generator::const_iterator gi = (*qi).begin(); gi != (*qi).end(); gi++)
-        {
-            for (Set::iterator si = (*gi).begin(); si != (*gi).end(); si++)
-            {
-                std::cout << *si;
-
-                if (++si != (*gi).end())
-                    std::cout << ',';
-
-                si--;
-            }
-
-            std::cout << std::endl;
-        }
-
-        std::cout << "%%" << std::endl;
+        print_generator(current_generator);
     }
 }
 
 int main(int argc, char *argv[])
 {
-    opts.verbose = true;
-    Product prod = read_tuples();
-    Quotient quot = generating_sets(prod);
-    print_quotient(quot);
+    opts.verbose = false;
+    Product prod;
+    read_tuples(prod);
+    generating_sets(prod);
 
     return 0;
 }
