@@ -88,7 +88,7 @@ descartify utilizes no build system as of now. On a Linux system, do:
     $ g++ -O3 -Wall -o quotient src/quotient.cpp
 
 
-Using descartify from tVhe command line
+Using descartify from the command line
 --------------------------------------
 
 These instructions assume descartify was successfully built using the above
