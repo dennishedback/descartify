@@ -124,7 +124,7 @@ each group of generating sets is delimited with a double-percent (%%):
     %%
 
 As previously explained, if _one_ group of generating sets cannot exactly
-represent the input tuples, cart-quot will determine the groups of generating
+represent the input tuples, `./quotient` will determine the groups of generating
 sets whose combined cartesian product contains exactly those tuples. If we
 were to store the output of `./product <sets` in a file called `prod` and
 then edit it (or otherwise filter the output, using grep, awk or some other
