@@ -5,7 +5,7 @@ descartify
 Table of Contents
 -----------------
 
-1. New CPP implementation
+1. New C++ implementation
 2. What is descartify?
 3. Building descartify
 4. Using descartify
@@ -13,7 +13,7 @@ Table of Contents
 6. Copying
 
 
-New CPP implementation
+New C++ implementation
 ----------------------
 
 This repository used to house a Python module, but its algorithm turned out
