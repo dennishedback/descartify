@@ -24,46 +24,25 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <iostream>
-#include <iterator>
+#ifndef DESCARTIFY_COMMON_HPP
+#define DESCARTIFY_COMMON_HPP
 
-#include "common.hpp"
+#include <set>
+#include <string>
+#include <vector>
 
-Generator read_sets(void)
+typedef std::set<std::string> Set;
+typedef std::vector<std::string> Tuple;
+typedef std::set<Tuple> Product;
+typedef std::vector<Set> Generator;
+
+struct Options
 {
-    Generator gen;
-    Set current_set;
-    std::string current_elem;
+    bool verbose;
+};
 
-    for (std::istreambuf_iterator<char> it(std::cin), end; it != end; it++)
-    {
-        char c = *it;
+#define VPRINT(x) if (opts.verbose) { std::cerr << x << std::endl; }
 
-        if (c == ',' || c == '\n')
-        {
-            current_set.insert(current_elem);
-            current_elem.clear();
+void cartesian_product(Generator &, Product &, bool);
 
-            if (c == '\n')
-            {
-                gen.push_back(current_set);
-                current_set.clear();
-            }
-        }
-        else
-        {
-            current_elem += c;
-        }
-    }
-
-    return gen;
-}
-
-int main(int argc, char *argv[])
-{
-    Generator gen = read_sets();
-    Product dummy;
-    cartesian_product(gen, dummy, true);
-
-    return 0;
-}
+#endif // DESCARTIFY_COMMON_HPP
