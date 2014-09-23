@@ -160,4 +160,5 @@ deemed not-so-unstable.
 Copying
 -------
 
-See file 'LICENSE'.
+This software package utilizes the license commonly known as "BSD 2-Clause".
+For details, see file 'LICENSE'.
