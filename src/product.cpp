@@ -65,76 +65,97 @@ Generator read_sets(void)
     return gen;
 }
 
-unsigned int product_cardinality(Generator gen)
+void print_tuple(Tuple &tup)
 {
-    unsigned int cardinality = 1;
-
-    for (Generator::iterator it = gen.begin(); it != gen.end(); it++)
-        cardinality *= (*it).size();
-
-    return cardinality;
-}
-
-Product cartesian_product(Generator gen)
-{
-    Product prod;
-    unsigned int counters[gen.size()];
-
-    for (unsigned int i = 0; i < gen.size(); i++)
-        counters[i] = 0;
-
-    for (unsigned int i = 0; i < product_cardinality(gen); i++)
+    for (Tuple::const_iterator ti = tup.begin(); ti != tup.end(); ti++)
     {
-        Tuple current_tuple;
+        std::cout << *ti;
 
-        for (unsigned int j = 0; j < gen.size(); j++)
-        {
-            Set current_set = gen[j];
-            unsigned int k = 0;
+        if (++ti != tup.end())
+            std::cout << ',';
 
-            for (Set::iterator it = current_set.begin(); it != current_set.end(); k++, it++)
-                if (k == counters[j])
-                    current_tuple.push_back(*it);
-        }
-        
-        prod.insert(current_tuple);
-
-        for (unsigned int j = 0; j < gen.size(); j++)
-        {
-            counters[j]++;
-            if (counters[j] > gen[j].size() - 1)
-                counters[j] = 0;
-            else
-                break;
-        }
+        ti--;
     }
 
-    return prod;
+    std::cout << '\n';
 }
 
-void print_product(Product prod)
+struct Counter {
+    Set::const_iterator begin;
+    Set::const_iterator end;
+    Set::const_iterator current;
+};
+
+typedef std::vector<Counter> Counters;
+
+void init_counters(Counters &ctrs, Generator &gen)
 {
-    for (Product::iterator pi = prod.begin(); pi != prod.end(); pi++)
+    for (Generator::const_iterator set = gen.begin(); set != gen.end(); set++)
     {
-        for (Tuple::const_iterator ti = (*pi).begin(); ti != (*pi).end(); ti++)
+        Counter ctr = {
+            set->begin(),
+            set->end(),
+            set->begin()
+        };
+        ctrs.push_back(ctr);
+    }
+}
+
+void populate_tuple(Tuple &tup, Counters &ctrs)
+{
+    for(Counters::const_iterator ctr = ctrs.begin(); ctr != ctrs.end(); ctr++)
+    {
+        tup.push_back(*(ctr->current));   
+    }
+}
+
+int increment_counters(Counters &ctrs)
+{
+    for (Counters::iterator ctr = ctrs.begin(); ; )
+    {
+        (ctr->current)++;
+        if (ctr->current == ctr->end)
         {
-            std::cout << *ti;
-
-            if (++ti != (*pi).end())
-                std::cout << ',';
-
-            ti--;
+            if (ctr+1 == ctrs.end())
+            {
+                return 1;
+            }
+            else
+            {
+                ctr->current = ctr->begin;
+                ctr++;
+            }
         }
+        else
+        {
+            break;
+        }
+    }
+    return 0;
+}
 
-        std::cout << std::endl;
+void cartesian_product(Generator &gen)
+{
+    Counters ctrs;
+
+    init_counters(ctrs, gen);
+
+    while (true)
+    {
+        Tuple tup;
+        
+        populate_tuple(tup, ctrs);
+        print_tuple(tup);
+
+        if (increment_counters(ctrs) != 0)
+            return;
     }
 }
 
 int main(int argc, char *argv[])
 {
     Generator gen = read_sets();
-    Product prod = cartesian_product(gen);
-    print_product(prod);
+    cartesian_product(gen);
 
     return 0;
 }
