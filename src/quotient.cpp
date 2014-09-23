@@ -30,20 +30,9 @@
 #include <string>
 #include <vector>
 
-typedef std::set<std::string> Set;
-typedef std::vector<std::string> Tuple;
-typedef std::set<Tuple> Product;
-typedef std::vector<Set> Generator;
-typedef std::set<Generator> Quotient;
-
-struct Options
-{
-    bool verbose;
-};
+#include "common.hpp"
 
 static Options opts;
-
-#define VPRINT(x) if (opts.verbose) { std::cerr << x << std::endl; }
 
 void read_tuples(Product &prod)
 {
@@ -73,6 +62,7 @@ void read_tuples(Product &prod)
     }
 }
 
+/*
 unsigned int product_cardinality(Generator &gen)
 {
     unsigned int cardinality = 1;
@@ -83,7 +73,7 @@ unsigned int product_cardinality(Generator &gen)
     return cardinality;
 }
 
-Product cartesian_product(Generator &gen)
+Product cartexxsian_product(Generator &gen)
 {
     Product prod;
     size_t gen_size = gen.size();
@@ -120,6 +110,7 @@ Product cartesian_product(Generator &gen)
 
     return prod;
 }
+*/
 
 void init_generator(Generator &gen, size_t size)
 {
@@ -172,7 +163,8 @@ void generating_sets(Product &prod)
                 tmp[i].insert(current_tuple[i]);
             }
    
-            Product tmp_product = cartesian_product(tmp);
+            Product tmp_product;
+            cartesian_product(tmp, tmp_product, false);
 
             for (Product::iterator tmpi = tmp_product.begin(); tmpi != tmp_product.end(); tmpi++)
             {
