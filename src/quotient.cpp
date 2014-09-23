@@ -62,56 +62,6 @@ void read_tuples(Product &prod)
     }
 }
 
-/*
-unsigned int product_cardinality(Generator &gen)
-{
-    unsigned int cardinality = 1;
-
-    for (Generator::iterator it = gen.begin(); it != gen.end(); it++)
-        cardinality *= it->size();
-
-    return cardinality;
-}
-
-Product cartexxsian_product(Generator &gen)
-{
-    Product prod;
-    size_t gen_size = gen.size();
-    unsigned int counters[gen_size];
-
-    for (unsigned int i = 0; i < gen_size; i++)
-        counters[i] = 0;
-
-    for (unsigned int i = 0; i < product_cardinality(gen); i++)
-    {
-        Tuple current_tuple;
-
-        for (unsigned int j = 0; j < gen_size; j++)
-        {
-            Set current_set = gen[j];
-            unsigned int k = 0;
-
-            for (Set::iterator it = current_set.begin(); it != current_set.end(); k++, it++)
-                if (k == counters[j])
-                    current_tuple.push_back(*it);
-        }
-        
-        prod.insert(current_tuple);
-
-        for (unsigned int j = 0; j < gen_size; j++)
-        {
-            counters[j]++;
-            if (counters[j] > gen[j].size() - 1)
-                counters[j] = 0;
-            else
-                break;
-        }
-    }
-
-    return prod;
-}
-*/
-
 void init_generator(Generator &gen, size_t size)
 {
     for (unsigned int i = 0; i < size; i++)
