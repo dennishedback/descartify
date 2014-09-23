@@ -38,10 +38,7 @@ typedef std::vector<Set> Generator;
 
 struct Options
 {
-    bool verbose;
 };
-
-#define VPRINT(x) if (opts.verbose) { std::cerr << x << std::endl; }
 
 void cartesian_product(Generator &, Product &, bool);
 

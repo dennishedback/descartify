@@ -32,11 +32,8 @@
 
 #include "common.hpp"
 
-static Options opts;
-
 void read_tuples(Product &prod)
 {
-    VPRINT("Reading input...");
     Tuple current_tuple;
     std::string current_elem;
 
@@ -77,7 +74,7 @@ void print_generator(Generator &gen)
 {
         for (Generator::const_iterator gi = gen.begin(); gi != gen.end(); gi++)
         {
-            for (Set::iterator si = gi->begin(); si != gi->end(); si++)
+            for (Set::const_iterator si = gi->begin(); si != gi->end(); si++)
             {
                 std::cout << *si;
 
@@ -97,7 +94,7 @@ void generating_sets(Product &prod)
 {
     Product ref_prod = prod;
 
-    for (unsigned int num_generators = 1, inserted = 0; prod.size() > 0; num_generators++)
+    while (prod.size() > 0)
     {
         Generator current_generator;
         init_generator(current_generator, prod.begin()->size());
@@ -116,7 +113,7 @@ void generating_sets(Product &prod)
             Product tmp_product;
             cartesian_product(tmp, tmp_product, false);
 
-            for (Product::iterator tmpi = tmp_product.begin(); tmpi != tmp_product.end(); tmpi++)
+            for (Product::const_iterator tmpi = tmp_product.begin(); tmpi != tmp_product.end(); tmpi++)
             {
                 if (!product_contains(ref_prod, *tmpi))
                 {
@@ -128,7 +125,7 @@ void generating_sets(Product &prod)
 
             current_generator = tmp;
             prod.erase(pi++);
-            VPRINT(++inserted << " tuples inserted into " << num_generators << " generators ");
+
         // FIXME: Ugly "expected primary-expression before '}' token" fix 
         foo:
             if (1 == 2) break;
@@ -139,7 +136,6 @@ void generating_sets(Product &prod)
 
 int main(int argc, char *argv[])
 {
-    opts.verbose = false;
     Product prod;
     read_tuples(prod);
     generating_sets(prod);
