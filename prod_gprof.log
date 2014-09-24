@@ -1,0 +1,279 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ns/call  ns/call  name    
+ 25.32      0.45     0.45 56953125     7.91     7.91  void std::_Destroy_aux<false>::__destroy<std::string*>(std::string*, std::string*)
+ 21.94      0.84     0.39 91125000     4.29     4.29  std::string* std::__uninitialized_copy<false>::__uninit_copy<std::string*, std::string*>(std::string*, std::string*, std::string*)
+ 21.94      1.23     0.39 45562500     8.57    26.55  std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&)
+ 10.13      1.41     0.18 11390625    15.83   122.05  populate_tuple(std::vector<std::string, std::allocator<std::string> >&, std::vector<Counter, std::allocator<Counter> >&)
+  6.19      1.52     0.11 11390625     9.67     9.67  print_tuple(std::vector<std::string, std::allocator<std::string> >&)
+  4.78      1.61     0.09 56953129     1.49     1.49  std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&)
+  3.94      1.68     0.07 11390625     6.16     6.16  increment_counters(std::vector<Counter, std::allocator<Counter> >&)
+  3.38      1.74     0.06                             std::_Rb_tree<std::vector<std::string, std::allocator<std::string> >, std::vector<std::string, std::allocator<std::string> >, std::_Identity<std::vector<std::string, std::allocator<std::string> > >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >::_M_insert_(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::vector<std::string, std::allocator<std::string> > const&)
+  1.69      1.77     0.03                             cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool)
+  0.56      1.78     0.01 11390625     0.88     8.79  std::vector<std::string, std::allocator<std::string> >::~vector()
+  0.00      1.78     0.00      650     0.00     0.00  std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const
+  0.00      1.78     0.00      285     0.00     0.00  frame_dummy
+  0.00      1.78     0.00       20     0.00     0.00  std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*)
+  0.00      1.78     0.00       14     0.00     0.00  std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::~_Rb_tree()
+  0.00      1.78     0.00       13     0.00     0.00  std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*)
+  0.00      1.78     0.00       13     0.00     0.00  std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&)
+  0.00      1.78     0.00        8     0.00     0.00  std::set<std::string, std::less<std::string>, std::allocator<std::string> >* std::__uninitialized_copy<false>::__uninit_copy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*)
+  0.00      1.78     0.00        5     0.00     0.00  void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*)
+  0.00      1.78     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z13init_countersRSt6vectorI7CounterSaIS0_EERS_ISt3setISsSt4lessISsESaISsEESaIS8_EE
+  0.00      1.78     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z9read_setsv
+  0.00      1.78     0.00        1     0.00     0.00  init_counters(std::vector<Counter, std::allocator<Counter> >&, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&)
+  0.00      1.78     0.00        1     0.00     0.00  std::_Vector_base<Counter, std::allocator<Counter> >::~_Vector_base()
+  0.00      1.78     0.00        1     0.00     0.00  std::vector<Counter, std::allocator<Counter> >::operator=(std::vector<Counter, std::allocator<Counter> > const&)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.56% of 1.78 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     96.6    0.03    1.69                 cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+                0.18    1.21 11390625/11390625     populate_tuple(std::vector<std::string, std::allocator<std::string> >&, std::vector<Counter, std::allocator<Counter> >&) [2]
+                0.11    0.00 11390625/11390625     print_tuple(std::vector<std::string, std::allocator<std::string> >&) [6]
+                0.01    0.09 11390625/11390625     std::vector<std::string, std::allocator<std::string> >::~vector() [7]
+                0.07    0.00 11390625/11390625     increment_counters(std::vector<Counter, std::allocator<Counter> >&) [9]
+                0.02    0.00 11390625/56953129     std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+                0.00    0.00       1/1           init_counters(std::vector<Counter, std::allocator<Counter> >&, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&) [28]
+                0.00    0.00       1/1           std::_Vector_base<Counter, std::allocator<Counter> >::~_Vector_base() [29]
+-----------------------------------------------
+                0.18    1.21 11390625/11390625     cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[2]     78.2    0.18    1.21 11390625         populate_tuple(std::vector<std::string, std::allocator<std::string> >&, std::vector<Counter, std::allocator<Counter> >&) [2]
+                0.39    0.82 45562500/45562500     std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [3]
+-----------------------------------------------
+                0.39    0.82 45562500/45562500     populate_tuple(std::vector<std::string, std::allocator<std::string> >&, std::vector<Counter, std::allocator<Counter> >&) [2]
+[3]     68.1    0.39    0.82 45562500         std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [3]
+                0.39    0.00 91125000/91125000     std::string* std::__uninitialized_copy<false>::__uninit_copy<std::string*, std::string*>(std::string*, std::string*, std::string*) [5]
+                0.36    0.00 45562500/56953125     void std::_Destroy_aux<false>::__destroy<std::string*>(std::string*, std::string*) [4]
+                0.07    0.00 45562500/56953129     std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+-----------------------------------------------
+                0.09    0.00 11390625/56953125     std::vector<std::string, std::allocator<std::string> >::~vector() [7]
+                0.36    0.00 45562500/56953125     std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [3]
+[4]     25.4    0.45    0.00 56953125         void std::_Destroy_aux<false>::__destroy<std::string*>(std::string*, std::string*) [4]
+-----------------------------------------------
+                0.39    0.00 91125000/91125000     std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [3]
+[5]     22.0    0.39    0.00 91125000         std::string* std::__uninitialized_copy<false>::__uninit_copy<std::string*, std::string*>(std::string*, std::string*, std::string*) [5]
+-----------------------------------------------
+                0.11    0.00 11390625/11390625     cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[6]      6.2    0.11    0.00 11390625         print_tuple(std::vector<std::string, std::allocator<std::string> >&) [6]
+-----------------------------------------------
+                0.01    0.09 11390625/11390625     cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[7]      5.6    0.01    0.09 11390625         std::vector<std::string, std::allocator<std::string> >::~vector() [7]
+                0.09    0.00 11390625/56953125     void std::_Destroy_aux<false>::__destroy<std::string*>(std::string*, std::string*) [4]
+-----------------------------------------------
+                0.00    0.00       4/56953129     read_sets() [11]
+                0.02    0.00 11390625/56953129     cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+                0.07    0.00 45562500/56953129     std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [3]
+[8]      4.8    0.09    0.00 56953129         std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+                0.00    0.00       8/8           std::set<std::string, std::less<std::string>, std::allocator<std::string> >* std::__uninitialized_copy<false>::__uninit_copy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [24]
+                0.00    0.00       4/13          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&) [23]
+                0.00    0.00       4/5           void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [25]
+-----------------------------------------------
+                0.07    0.00 11390625/11390625     cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[9]      3.9    0.07    0.00 11390625         increment_counters(std::vector<Counter, std::allocator<Counter> >&) [9]
+-----------------------------------------------
+                                                 <spontaneous>
+[10]     3.4    0.06    0.00                 std::_Rb_tree<std::vector<std::string, std::allocator<std::string> >, std::vector<std::string, std::allocator<std::string> >, std::_Identity<std::vector<std::string, std::allocator<std::string> > >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >::_M_insert_(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::vector<std::string, std::allocator<std::string> > const&) [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     0.0    0.00    0.00                 read_sets() [11]
+                0.00    0.00       4/56953129     std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+                0.00    0.00     650/650         std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [19]
+                0.00    0.00      90/285         frame_dummy [12]
+                0.00    0.00       7/20          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*) [20]
+                0.00    0.00       2/13          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&) [23]
+                0.00    0.00       1/14          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::~_Rb_tree() [21]
+-----------------------------------------------
+                0.00    0.00      90/285         read_sets() [11]
+                0.00    0.00     195/285         std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*) [22]
+[12]     0.0    0.00    0.00     285         frame_dummy [12]
+-----------------------------------------------
+                0.00    0.00     650/650         read_sets() [11]
+[19]     0.0    0.00    0.00     650         std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [19]
+-----------------------------------------------
+                                 285             std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*) [20]
+                0.00    0.00       7/20          read_sets() [11]
+                0.00    0.00      13/20          void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [25]
+[20]     0.0    0.00    0.00      20+285     std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*) [20]
+                                 285             std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*) [20]
+-----------------------------------------------
+                0.00    0.00       1/14          read_sets() [11]
+                0.00    0.00      13/14          void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [25]
+[21]     0.0    0.00    0.00      14         std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::~_Rb_tree() [21]
+-----------------------------------------------
+                                  91             std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*) [22]
+                0.00    0.00      13/13          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&) [23]
+[22]     0.0    0.00    0.00      13+91      std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*) [22]
+                0.00    0.00     195/285         frame_dummy [12]
+                                  91             std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*) [22]
+-----------------------------------------------
+                0.00    0.00       2/13          read_sets() [11]
+                0.00    0.00       4/13          std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+                0.00    0.00       7/13          std::set<std::string, std::less<std::string>, std::allocator<std::string> >* std::__uninitialized_copy<false>::__uninit_copy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [24]
+[23]     0.0    0.00    0.00      13         std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&) [23]
+                0.00    0.00      13/13          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*) [22]
+-----------------------------------------------
+                0.00    0.00       8/8           std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+[24]     0.0    0.00    0.00       8         std::set<std::string, std::less<std::string>, std::allocator<std::string> >* std::__uninitialized_copy<false>::__uninit_copy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [24]
+                0.00    0.00       7/13          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&) [23]
+-----------------------------------------------
+                0.00    0.00       1/5           std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::~vector() [31]
+                0.00    0.00       4/5           std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&) [8]
+[25]     0.0    0.00    0.00       5         void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [25]
+                0.00    0.00      13/20          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*) [20]
+                0.00    0.00      13/14          std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::~_Rb_tree() [21]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [40]
+[26]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z13init_countersRSt6vectorI7CounterSaIS0_EERS_ISt3setISsSt4lessISsESaISsEESaIS8_EE [26]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [40]
+[27]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z9read_setsv [27]
+-----------------------------------------------
+                0.00    0.00       1/1           cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[28]     0.0    0.00    0.00       1         init_counters(std::vector<Counter, std::allocator<Counter> >&, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&) [28]
+                0.00    0.00       1/1           std::vector<Counter, std::allocator<Counter> >::operator=(std::vector<Counter, std::allocator<Counter> > const&) [30]
+-----------------------------------------------
+                0.00    0.00       1/1           cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [1]
+[29]     0.0    0.00    0.00       1         std::_Vector_base<Counter, std::allocator<Counter> >::~_Vector_base() [29]
+-----------------------------------------------
+                0.00    0.00       1/1           init_counters(std::vector<Counter, std::allocator<Counter> >&, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&) [28]
+[30]     0.0    0.00    0.00       1         std::vector<Counter, std::allocator<Counter> >::operator=(std::vector<Counter, std::allocator<Counter> > const&) [30]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [26] _GLOBAL__sub_I__Z13init_countersRSt6vectorI7CounterSaIS0_EERS_ISt3setISsSt4lessISsESaISsEESaIS8_EE [4] void std::_Destroy_aux<false>::__destroy<std::string*>(std::string*, std::string*) [8] std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > > >, std::set<std::string, std::less<std::string>, std::allocator<std::string> > const&)
+  [27] _GLOBAL__sub_I__Z9read_setsv [25] void std::_Destroy_aux<false>::__destroy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [22] std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_copy(std::_Rb_tree_node<std::string> const*, std::_Rb_tree_node<std::string>*)
+   [6] print_tuple(std::vector<std::string, std::allocator<std::string> >&) [29] std::_Vector_base<Counter, std::allocator<Counter> >::~_Vector_base() [20] std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_M_erase(std::_Rb_tree_node<std::string>*)
+  [28] init_counters(std::vector<Counter, std::allocator<Counter> >&, std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&) [5] std::string* std::__uninitialized_copy<false>::__uninit_copy<std::string*, std::string*>(std::string*, std::string*, std::string*) [23] std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::_Rb_tree(std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> > const&)
+   [2] populate_tuple(std::vector<std::string, std::allocator<std::string> >&, std::vector<Counter, std::allocator<Counter> >&) [24] std::set<std::string, std::less<std::string>, std::allocator<std::string> >* std::__uninitialized_copy<false>::__uninit_copy<std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*>(std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*, std::set<std::string, std::less<std::string>, std::allocator<std::string> >*) [21] std::_Rb_tree<std::string, std::string, std::_Identity<std::string>, std::less<std::string>, std::allocator<std::string> >::~_Rb_tree()
+   [1] cartesian_product(std::vector<std::set<std::string, std::less<std::string>, std::allocator<std::string> >, std::allocator<std::set<std::string, std::less<std::string>, std::allocator<std::string> > > >&, std::set<std::vector<std::string, std::allocator<std::string> >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >&, bool) [30] std::vector<Counter, std::allocator<Counter> >::operator=(std::vector<Counter, std::allocator<Counter> > const&) [10] std::_Rb_tree<std::vector<std::string, std::allocator<std::string> >, std::vector<std::string, std::allocator<std::string> >, std::_Identity<std::vector<std::string, std::allocator<std::string> > >, std::less<std::vector<std::string, std::allocator<std::string> > >, std::allocator<std::vector<std::string, std::allocator<std::string> > > >::_M_insert_(std::_Rb_tree_node_base*, std::_Rb_tree_node_base*, std::vector<std::string, std::allocator<std::string> > const&)
+   [9] increment_counters(std::vector<Counter, std::allocator<Counter> >&) [3] std::vector<std::string, std::allocator<std::string> >::_M_insert_aux(__gnu_cxx::__normal_iterator<std::string*, std::vector<std::string, std::allocator<std::string> > >, std::string const&) [12] frame_dummy
+  [19] std::istreambuf_iterator<char, std::char_traits<char> >::_M_get() const [7] std::vector<std::string, std::allocator<std::string> >::~vector()
