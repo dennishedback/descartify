@@ -24,6 +24,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <algorithm>
 #include <iostream>
 #include <iterator>
 #include <set>
@@ -65,7 +66,7 @@ void init_generator(Generator &gen, size_t size)
         gen.push_back(Set());   
 }
 
-bool product_contains(Product &prod, Tuple tuple)
+bool product_contains(Product &prod, Tuple const &tuple)
 {
     return prod.find(tuple) != prod.end();
 }
@@ -90,47 +91,52 @@ void print_generator(Generator &gen)
         std::cout << "%%\n";
 }
 
+void insert_tuple(Generator &gen, Tuple const &tup)
+{
+    // FIXME: Handle cases where tup.size() != gen.size()
+    Generator::iterator set = gen.begin();
+    Tuple::const_iterator elem = tup.begin();
+              
+    for (; set != gen.end() && elem != tup.end(); set++, elem++)
+    {
+        set->insert(*elem);
+    }
+}
+
+bool is_subset(Product &subset, Product &superset)
+{
+    return std::includes(superset.begin(), superset.end(), subset.begin(), subset.end());
+}
+
 void generating_sets(Product &prod)
 {
     Product ref_prod = prod;
 
     while (prod.size() > 0)
     {
-        Generator current_generator;
-        init_generator(current_generator, prod.begin()->size());
+        Generator gen;
+        init_generator(gen, prod.begin()->size());
 
-        for (Product::iterator pi = prod.begin(); pi != prod.end();)
+        for (Product::iterator prod_it = prod.begin(); prod_it != prod.end();)
         {
-            Tuple current_tuple = *pi;
-            Generator tmp = current_generator;
-            size_t tup_size = current_tuple.size();
-              
-            for (unsigned int i = 0; i < tup_size; i++)
+            Generator tmp_gen = gen;
+            Product tmp_prod;
+            
+            insert_tuple(tmp_gen, *prod_it);
+            cartesian_product(tmp_gen, tmp_prod, false);
+
+            if (is_subset(tmp_prod, ref_prod))
             {
-                tmp[i].insert(current_tuple[i]);
+                gen = tmp_gen;
+                prod.erase(prod_it++);
             }
-   
-            Product tmp_product;
-            cartesian_product(tmp, tmp_product, false);
-
-            for (Product::const_iterator tmpi = tmp_product.begin(); tmpi != tmp_product.end(); tmpi++)
+            else
             {
-                if (!product_contains(ref_prod, *tmpi))
-                {
-                    ++pi;
-                    // FIXME: Go away ugly goto, go away!
-                    goto foo;
-                }
+                ++prod_it;
             }
-
-            current_generator = tmp;
-            prod.erase(pi++);
-
-        // FIXME: Ugly "expected primary-expression before '}' token" fix 
-        foo:
-            if (1 == 2) break;
         }
-        print_generator(current_generator);
+
+        print_generator(gen);
     }
 }
 
