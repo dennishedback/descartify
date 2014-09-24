@@ -84,8 +84,8 @@ Building descartify
 descartify utilizes no build system as of now. On a Linux system, do:
 
     $ cd ~/path/to/descartify_source
-    $ g++ -O3 -Wall -o product src/product.cpp
-    $ g++ -O3 -Wall -o quotient src/quotient.cpp
+    $ g++ -O3 -Wall -DUSE_LL -o product src/product.cpp src/common.cpp
+    $ g++ -O3 -Wall -o quotient src/quotient.cpp src/common.cpp
 
 
 Using descartify from the command line

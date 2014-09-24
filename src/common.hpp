@@ -29,12 +29,27 @@
 
 #include <set>
 #include <string>
-#include <vector>
 
-typedef std::set<std::string> Set;
+#ifdef USE_LL
+#include <list>
+#else 
+#include <vector>
+#endif //USE_LL
+
+#ifdef USE_LL
+typedef std::list<std::string> Tuple;
+#else
 typedef std::vector<std::string> Tuple;
+#endif // USE_LL
+
 typedef std::set<Tuple> Product;
+typedef std::set<std::string> Set;
+
+#ifdef USE_LL
+typedef std::list<Set> Generator;
+#else
 typedef std::vector<Set> Generator;
+#endif // USE_LL
 
 struct Options
 {

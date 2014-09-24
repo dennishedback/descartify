@@ -27,6 +27,7 @@
 #include "common.hpp"
 
 #include <iostream>
+#include <vector>
 
 struct Counter {
     Set::const_iterator begin;
