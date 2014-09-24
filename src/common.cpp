@@ -39,14 +39,15 @@ typedef std::vector<Counter> Counters;
 
 void init_counters(Counters &ctrs, Generator &gen)
 {
-    for (Generator::const_iterator set = gen.begin(); set != gen.end(); set++)
+    Counter tpl;
+    ctrs = Counters(gen.size(), tpl);
+
+    unsigned int i = 0;
+    for (Generator::const_iterator set = gen.begin(); set != gen.end(); set++, i++)
     {
-        Counter ctr = {
-            set->begin(),
-            set->end(),
-            set->begin()
-        };
-        ctrs.push_back(ctr);
+        ctrs[i].begin = set->begin();
+        ctrs[i].end = set->end();
+        ctrs[i].current = ctrs[i].begin;
     }
 }
 
@@ -97,7 +98,6 @@ void print_tuple(Tuple &tup)
 
     std::cout << '\n';
 }
-
 
 void cartesian_product(Generator &gen, Product &prod, bool print)
 {
