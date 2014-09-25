@@ -37,12 +37,17 @@ struct Counter {
 
 typedef std::vector<Counter> Counters;
 
+// Initalizes the counters with iterators from the sets contained in gen
+
 void init_counters(Counters &ctrs, Generator &gen)
 {
+    // Construct the counters with a template. Indexing is faster than using
+    // push_back
     Counter tpl;
     ctrs = Counters(gen.size(), tpl);
 
     unsigned int i = 0;
+    // Initialize the counters
     for (Generator::const_iterator set = gen.begin(); set != gen.end(); set++, i++)
     {
         ctrs[i].begin = set->begin();
@@ -50,6 +55,9 @@ void init_counters(Counters &ctrs, Generator &gen)
         ctrs[i].current = ctrs[i].begin;
     }
 }
+
+// Populates a tuple with elements from an input set, according to the state of
+// the counters provided in ctrs
 
 void populate_tuple(Tuple &tup, Counters &ctrs)
 {
@@ -59,30 +67,44 @@ void populate_tuple(Tuple &tup, Counters &ctrs)
     }
 }
 
+// Increments the counters contained in ctrs
+
 int increment_counters(Counters &ctrs)
 {
+    // Increment the first counter, then the second, etc.
     for (Counters::iterator ctr = ctrs.begin(); ; )
     {
+        // Increment this counter.
         (ctr->current)++;
         if (ctr->current == ctr->end)
         {
-            if (ctr+1 == ctrs.end())
+            // The counter is about to roll over
+            if ((ctr + 1) == ctrs.end())
             {
+                // This is the last counter, and it is about to roll over, so
+                // we're done here.
                 return 1;
             }
             else
             {
+                // This is not the last counter, so we reset it
                 ctr->current = ctr->begin;
                 ctr++;
             }
         }
         else
         {
+            // If the counter is not about to roll over, we won't increment
+            // any more counters for now
             break;
         }
     }
+
+    // There's still more tuples to add to this Cartesian product
     return 0;
 }
+
+// Prints a tuple. Each element is delimited by ','.
 
 void print_tuple(Tuple &tup)
 {
@@ -98,6 +120,10 @@ void print_tuple(Tuple &tup)
 
     std::cout << '\n';
 }
+
+// Calculates the Cartesian products of the sets contained in gen,
+// and stores it in prod. Alternatively prints the product, tuple
+// by tuple.
 
 void cartesian_product(Generator &gen, Product &prod, bool print)
 {
@@ -116,8 +142,10 @@ void cartesian_product(Generator &gen, Product &prod, bool print)
         else
             prod.insert(tup);
 
-        if (increment_counters(ctrs) != 0)
+        if (increment_counters(ctrs) != 0) {
+            // The last counter was about to roll over, we're done
             return;
+        }
     }
 }
 

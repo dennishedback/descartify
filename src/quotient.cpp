@@ -1,4 +1,8 @@
 /*
+ * Takes an arbitrary number of tuples as input  and calculates the fewest
+ * possible groups of sets whose combined Cartesian product contains exactly
+ * those tuples.
+ *
  * Copyright (c) 2012, Dennis Hedback 
  * All rights reserved.
  * 

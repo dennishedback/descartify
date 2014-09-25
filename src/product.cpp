@@ -1,4 +1,7 @@
 /*
+ * Takes an arbitrary number of sets as input and calculates the Cartesian
+ * product of those sets.
+ *
  * Copyright (c) 2012, Dennis Hedback 
  * All rights reserved.
  * 
@@ -26,7 +29,7 @@
 
 #include <iostream>
 
-#include "common.hpp"
+#include "common.hpp" // cartesian_product
 
 Generator read_sets(void)
 {
