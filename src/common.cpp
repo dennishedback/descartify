@@ -39,12 +39,9 @@ typedef std::vector<Counter> Counters;
 
 // Initalizes the counters with iterators from the sets contained in gen
 
-void init_counters(Counters &ctrs, Generator &gen)
+void init_counters(Counters &ctrs, Generator &gen, size_t sz)
 {
-    // Construct the counters with a template. Indexing is faster than using
-    // push_back
-    Counter tpl;
-    ctrs = Counters(gen.size(), tpl);
+    ctrs = Counters(sz);
 
     unsigned int i = 0;
     // Initialize the counters
@@ -59,11 +56,14 @@ void init_counters(Counters &ctrs, Generator &gen)
 // Populates a tuple with elements from an input set, according to the state of
 // the counters provided in ctrs
 
-void populate_tuple(Tuple &tup, Counters &ctrs)
+void populate_tuple(Tuple &tup, Counters &ctrs, size_t sz)
 {
-    for(Counters::const_iterator ctr = ctrs.begin(); ctr != ctrs.end(); ctr++)
+    tup = Tuple(sz);
+
+    unsigned int i = 0;
+    for(Counters::const_iterator ctr = ctrs.begin(); ctr != ctrs.end(); ctr++, i++)
     {
-        tup.push_back(*(ctr->current));   
+        tup[i] = *(ctr->current);   
     }
 }
 
@@ -128,14 +128,15 @@ void print_tuple(Tuple &tup)
 void cartesian_product(Generator &gen, Product &prod, bool print)
 {
     Counters ctrs;
+    size_t gen_size = gen.size();
 
-    init_counters(ctrs, gen);
+    init_counters(ctrs, gen, gen_size);
 
     while (true)
     {
         Tuple tup;
         
-        populate_tuple(tup, ctrs);
+        populate_tuple(tup, ctrs, gen_size);
 
         if (print)
             print_tuple(tup);

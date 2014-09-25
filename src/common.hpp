@@ -29,22 +29,11 @@
 
 #include <set>
 #include <string>
-
-#ifdef USE_LL
-    #include <list>
-#else 
-    #include <vector>
-#endif //USE_LL
+#include <vector>
 
 typedef std::set<std::string> Set;
-
-#ifdef USE_LL
-    typedef std::list<std::string> Tuple;
-    typedef std::list<Set> Generator;
-#else
-    typedef std::vector<std::string> Tuple;
-    typedef std::vector<Set> Generator;
-#endif // USE_LL
+typedef std::vector<std::string> Tuple;
+typedef std::vector<Set> Generator;
 
 #ifdef USE_HTAB
     #include <boost/unordered_set.hpp>
