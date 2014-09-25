@@ -102,7 +102,19 @@ void insert_tuple(Generator &gen, Tuple const &tup)
 
 bool is_subset(Product &subset, Product &superset)
 {
+#ifdef USE_HTAB
+    for (Product::const_iterator subit = subset.begin(); subit != subset.end(); subit++)
+    {
+        if (!product_contains(superset, *subit))
+        {
+            return false;
+        }
+    }
+
+    return true;
+#else
     return std::includes(superset.begin(), superset.end(), subset.begin(), subset.end());
+#endif // USE_HTAB
 }
 
 void generating_sets(Product &prod)

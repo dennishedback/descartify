@@ -46,7 +46,12 @@ typedef std::set<std::string> Set;
     typedef std::vector<Set> Generator;
 #endif // USE_LL
 
-typedef std::set<Tuple> Product;
+#ifdef USE_HTAB
+    #include <boost/unordered_set.hpp>
+    typedef boost::unordered_set<Tuple> Product;
+#else
+    typedef std::set<Tuple> Product;
+#endif // USE_HTAB
 
 struct Options
 {
