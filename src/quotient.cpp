@@ -3,9 +3,9 @@
  * possible groups of sets whose combined Cartesian product contains exactly
  * those tuples.
  *
- * Copyright (c) 2012, Dennis Hedback 
+ * Copyright (c) 2012, Dennis Hedback
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
@@ -70,7 +70,7 @@ void read_tuples(Product &prod)
 void init_generator(Generator &gen, size_t size)
 {
     for (unsigned int i = 0; i < size; i++)
-        gen.push_back(Set());   
+        gen.push_back(Set());
 }
 
 // Does product contains Tuple 'tup'?
@@ -101,7 +101,7 @@ void insert_tuple(Generator &gen, Tuple const &tup)
 {
     // FIXME: Handle cases where tup.size() != gen.size()
     Generator::iterator set = gen.begin();
-    Tuple::const_iterator elem = tup.begin();             
+    Tuple::const_iterator elem = tup.begin();
     // Insert tup[n] into gen[n]
     for (; set != gen.end() && elem != tup.end(); set++, elem++)
     {

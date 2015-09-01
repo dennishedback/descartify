@@ -1,7 +1,7 @@
 /*
- * Copyright (c) 2012, Dennis Hedback 
+ * Copyright (c) 2012, Dennis Hedback
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *
@@ -63,7 +63,7 @@ void populate_tuple(Tuple &tup, Counters &ctrs, size_t sz)
     unsigned int i = 0;
     for(Counters::const_iterator ctr = ctrs.begin(); ctr != ctrs.end(); ctr++, i++)
     {
-        tup[i] = *(ctr->current);   
+        tup[i] = *(ctr->current);
     }
 }
 
@@ -135,7 +135,7 @@ void cartesian_product(Generator &gen, Product &prod, bool print)
     while (true)
     {
         Tuple tup;
-        
+
         populate_tuple(tup, ctrs, gen_size);
 
         if (print)
